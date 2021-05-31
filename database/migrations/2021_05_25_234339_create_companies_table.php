@@ -19,6 +19,8 @@ class CreateCompaniesTable extends Migration
             $table->string('cnpj', 13)->unique();
             $table->string('address');
             $table->timestamps();
+
+            $table->softDeletes();
         });
     }
 

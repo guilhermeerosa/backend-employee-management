@@ -47,10 +47,6 @@ class UserService
 
         $user = User::where('id', $id)->first();
 
-        if ($user->password != $passwordHash) {
-            abort(400, 'Você não tem permissão para realizar essa ação!');
-        }
-
         $request->merge([
             'password' => $passwordHash
         ]);
@@ -64,12 +60,10 @@ class UserService
 
     public function validateCPF($cpf)
     {
-        // Verifica se foi informado todos os digitos corretamente
         if (strlen($cpf) != 11) {
             abort(400, 'Quantidade de caracteres inválida!');
         }
 
-        // Faz o calculo para validar o CPF
         for ($t = 9; $t < 11; $t++) {
             for ($d = 0, $c = 0; $c < $t; $c++) {
                 $d += $cpf[$c] * (($t + 1) - $c);
