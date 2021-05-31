@@ -29,8 +29,7 @@ class StoreUserRequest extends FormRequest
             'cpf' => 'string|required',
             'email' => 'string|required',
             'address' => 'string|required',
-            'password' => 'string|required',
-            'companies' => 'array|required'
+            'password' => 'string|required'
         ];
     }
 }

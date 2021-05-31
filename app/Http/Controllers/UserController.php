@@ -61,7 +61,11 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, $id)
     {
-        //
+        $resource = User::findOrFail($id);
+        $resource = $this->userService->updateUser($request, $id);
+        $resource->fill($request->all())->save();
+        
+        return $this->show($resource->id);
     }
 
     /**
